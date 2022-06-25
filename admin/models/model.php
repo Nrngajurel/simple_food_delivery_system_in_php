@@ -42,7 +42,8 @@ abstract class Model
         $columns = implode(', ', $column_arr);
         $values = "'".implode("','", array_values($data)). "'";
         $sql = "UPDATE {$this->table} SET {$columns} WHERE id = {$id}";
-        dd($sql);
+        $this->db->query($sql);
+        return $this->find($id);
     }
     public function delete($id){
         $sql = "DELETE FROM {$this->table} WHERE id = {$id}";
